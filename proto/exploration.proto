@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "github.com/brice-74/grpc-exploration/proto";
+
+package exploration;
+
+service explorationService {
+  rpc UnaryCall (ExplorationRequest) returns (ExplorationResponse);
+  rpc ServerStreamingCall (ExplorationRequest) returns (stream ExplorationResponse);
+  rpc ClientStreamingCall (stream ExplorationRequest) returns (ExplorationResponse);
+  rpc BidirectionalStreamingCall (stream ExplorationRequest) returns (stream ExplorationResponse);
+}
+
+message ExplorationRequest {
+  string message = 1;
+}
+
+message ExplorationResponse {
+  string response = 1;
+}
